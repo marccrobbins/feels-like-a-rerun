@@ -30,7 +30,11 @@ PrefabInstance:
     - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: _managers.Array.data[1]
       value: 
-      objectReference: {fileID: 259820950342150756, guid: 707d58c498d68234e8518b6940c53c98, type: 3}
+      objectReference: {fileID: 292183600097341743, guid: fcd8d268b0f507c4994eeb2aa97932c5, type: 3}
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _managers.Array.data[2]
+      value: 
+      objectReference: {fileID: 292183600097341743, guid: fcd8d268b0f507c4994eeb2aa97932c5, type: 3}
     - target: {fileID: 2240799910552582985, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: m_Name
       value: FLRInitialization

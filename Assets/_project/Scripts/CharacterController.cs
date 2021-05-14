@@ -1,3 +1,4 @@
+using System;
 using KinematicCharacterController;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,11 @@ namespace TOJam.FLR
 		[SerializeField] private KinematicCharacterMotor _motor;
 		[SerializeField] private Animator _animator;
 
+		[Header("Camera")] 
+		[SerializeField] private Camera _camera;
+		[SerializeField] private Transform _cameraTarget;
+		[SerializeField] private float _distanceBeforeFollow;
+		
 		[Header("GroundMovement")]
 		[SerializeField] private float _moveSpeed = 5;
 		[SerializeField] private float _orientSpeed = 20;
@@ -20,6 +26,7 @@ namespace TOJam.FLR
 		
 		[Header("Jump")]
 		[SerializeField] private float _jumpPower;
+		[SerializeField] private float _extraForwardJumpPower = 5;
 		[SerializeField] private float _wallJumpPower;
 		[SerializeField] private float _postJumpGracePeriod;
 
@@ -63,15 +70,29 @@ namespace TOJam.FLR
 
 		#region MonoBehaviour
 
-		private void Awake()
+		private void OnEnable()
 		{
 			_motor.CharacterController = this;
+			KinematicMotorManager.Instance.RegisterMotor(_motor);
+		}
+
+		private void OnDisable()
+		{
+			KinematicMotorManager.Instance.UnRegisterMotor(_motor);
 		}
 
 		private void Update()
 		{
 			ProcessInput();
 			UpdateAnimation();
+
+			var distance = Vector3.Distance(_motor.TransientPosition, _cameraTarget.position);
+			if (distance >= _distanceBeforeFollow && _motor.TransientPosition.z >= _cameraTarget.position.z)
+			{
+				var target = _motor.TransientPosition;
+				target.x = 0;
+				_cameraTarget.position = Vector3.MoveTowards(_cameraTarget.position, target, Time.deltaTime * 15);
+			}
 		}
 		
 		#endregion MonoBehaviouor
@@ -92,11 +113,11 @@ namespace TOJam.FLR
 			_currentMoveVector = Vector3.ClampMagnitude(new Vector3(_currentMoveInput.x, 0, _currentMoveInput.y), 1);
 
 			//Calculate camera orientation
-			_cameraLookVector = Vector3.ProjectOnPlane(CameraManager.Instance.CameraTransform.rotation * Vector3.forward, _motor.CharacterUp)
+			_cameraLookVector = Vector3.ProjectOnPlane(_camera.transform.rotation * Vector3.forward, _motor.CharacterUp)
 				.normalized;
 			if (_cameraLookVector.sqrMagnitude == 0f)
 			{
-				_cameraLookVector = Vector3.ProjectOnPlane(CameraManager.Instance.CameraTransform.rotation * Vector3.up, _motor.CharacterUp)
+				_cameraLookVector = Vector3.ProjectOnPlane(_camera.transform.rotation * Vector3.up, _motor.CharacterUp)
 					.normalized;
 			}
 
@@ -230,6 +251,7 @@ namespace TOJam.FLR
 
 		            // Add to the return velocity and reset jump state
 		            currentVelocity += jumpDirection * jumpPower - Vector3.Project(currentVelocity, _motor.CharacterUp);
+		            currentVelocity += _moveDirectionVector * _extraForwardJumpPower;
 		            _isJumpRequested = false;
 		            _hasJumped = true;
 		            _setJumpInAnimator = true;
@@ -287,7 +309,7 @@ namespace TOJam.FLR
 			if (!_motor.GroundingStatus.IsStableOnGround && !hitStabilityReport.IsStable)
 			{
 				_canWallJump = true;
-				_wallHitNormal = Vector3.Lerp(hitNormal, _motor.CharacterUp, 0.6f);
+				_wallHitNormal = Vector3.Lerp(hitNormal, _motor.CharacterUp, 0.5f);
 			}
 		}
 

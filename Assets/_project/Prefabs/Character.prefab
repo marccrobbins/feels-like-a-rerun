@@ -1052,13 +1052,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _motor: {fileID: 4257940385743728434}
   _animator: {fileID: 7403005470723993589}
-  _moveSpeed: 8
+  _camera: {fileID: 0}
+  _cameraTarget: {fileID: 0}
+  _distanceBeforeFollow: 0
+  _moveSpeed: 12
   _orientSpeed: 20
   _gravity: {x: 0, y: -30, z: 0}
   _airSpeed: 5
-  _airAcceleration: 1
-  _jumpPower: 10
-  _wallJumpPower: 14
+  _airAcceleration: 10
+  _jumpPower: 12
+  _extraForwardJumpPower: 15
+  _wallJumpPower: 20
   _postJumpGracePeriod: 0.1
   _slidingSlopeAngle: 15
   _slidingMoveSpeedModifier: 1.5
