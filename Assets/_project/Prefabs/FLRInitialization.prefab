@@ -7,9 +7,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _managers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _firstScene.sceneName
+      value: TestScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _firstScene.scenePath
+      value: Assets/_project/Scenes/TestScene.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _firstScene.sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 6aacbdcde042ec249bed3d0d3a3b3c0c, type: 3}
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _managers.Array.data[0]
+      value: 
+      objectReference: {fileID: 567834947029364155, guid: b0f8717ae05cabc42a91b0bc328beccb, type: 3}
+    - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
+      propertyPath: _managers.Array.data[1]
+      value: 
+      objectReference: {fileID: 259820950342150756, guid: 707d58c498d68234e8518b6940c53c98, type: 3}
     - target: {fileID: 2240799910552582985, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: m_Name
-      value: Initialization
+      value: FLRInitialization
       objectReference: {fileID: 0}
     - target: {fileID: 2240799910552582987, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: m_RootOrder

@@ -174,22 +174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8267645935649551886, guid: 340ca8e06b973824fa910e9a4298b192, type: 3}
-      propertyPath: _firstScene.sceneName
-      value: TestScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267645935649551886, guid: 340ca8e06b973824fa910e9a4298b192, type: 3}
-      propertyPath: _firstScene.scenePath
-      value: Assets/_project/Scenes/TestScene.unity
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267645935649551886, guid: 340ca8e06b973824fa910e9a4298b192, type: 3}
-      propertyPath: _firstScene.sceneAsset
-      value: 
-      objectReference: {fileID: 102900000, guid: 6aacbdcde042ec249bed3d0d3a3b3c0c, type: 3}
-    - target: {fileID: 8267645935649551886, guid: 340ca8e06b973824fa910e9a4298b192, type: 3}
-      propertyPath: _managers.Array.data[0]
-      value: 
-      objectReference: {fileID: 567834947029364155, guid: b0f8717ae05cabc42a91b0bc328beccb, type: 3}
     - target: {fileID: 8267645935649551887, guid: 340ca8e06b973824fa910e9a4298b192, type: 3}
       propertyPath: m_Name
       value: FLRInitialization
