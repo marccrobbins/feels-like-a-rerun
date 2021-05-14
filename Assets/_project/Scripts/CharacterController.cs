@@ -1,5 +1,3 @@
-using System;
-using ICSharpCode.NRefactory.Ast;
 using KinematicCharacterController;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +25,7 @@ namespace TOJam.FLR
 
 		[Header("Sliding")] 
 		[SerializeField, Range(0, 90)] private float _slidingSlopeAngle = 15;
+		[SerializeField] private float _slidingMoveSpeedModifier;
 		
 		[SerializeField] private InputActionProperty _moveAction;
 		[SerializeField] private InputActionProperty _jumpAction;
@@ -177,7 +176,7 @@ namespace TOJam.FLR
                 // Calculate target velocity
                 Vector3 inputRight = Vector3.Cross(_moveDirectionVector, _motor.CharacterUp);
                 Vector3 reorientedInput = Vector3.Cross(_motor.GroundingStatus.GroundNormal, inputRight).normalized * _moveDirectionVector.magnitude;
-                targetMovementVelocity = reorientedInput * _moveSpeed;
+                targetMovementVelocity = reorientedInput * GetMoveSpeed();
 
                 // Smooth movement Velocity
                 currentVelocity = targetMovementVelocity;
@@ -317,6 +316,13 @@ namespace TOJam.FLR
 			_animator.SetBool(AnimationHash.IsSliding, _isSliding);
 		}
 
+		private float GetMoveSpeed()
+		{
+			var speed = _moveSpeed;
+			if (_isSliding && _slidingMoveSpeedModifier >= 1) speed *= _slidingMoveSpeedModifier;
+			return speed;
+		}
+		
 		private bool IsOnDownwardSlope()
 		{
 			var angle = Vector3.Angle(_motor.CharacterUp, _motor.GroundingStatus.GroundNormal);

@@ -13,16 +13,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: _firstScene.sceneName
-      value: TestScene
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: _firstScene.scenePath
-      value: Assets/_project/Scenes/TestScene.unity
+      value: Assets/_project/Scenes/Level1.unity
       objectReference: {fileID: 0}
     - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: _firstScene.sceneAsset
       value: 
-      objectReference: {fileID: 102900000, guid: 6aacbdcde042ec249bed3d0d3a3b3c0c, type: 3}
+      objectReference: {fileID: 102900000, guid: 7143efcbab1270b45b36a5199a067b18, type: 3}
     - target: {fileID: 2240799910552582984, guid: a7798b9b850fff64f9a50ff7eef70590, type: 3}
       propertyPath: _managers.Array.data[0]
       value: 

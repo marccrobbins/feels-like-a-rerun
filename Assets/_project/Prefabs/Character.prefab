@@ -1057,10 +1057,11 @@ MonoBehaviour:
   _gravity: {x: 0, y: -30, z: 0}
   _airSpeed: 5
   _airAcceleration: 1
-  _jumpPower: 8
-  _wallJumpPower: 12
+  _jumpPower: 10
+  _wallJumpPower: 14
   _postJumpGracePeriod: 0.1
   _slidingSlopeAngle: 15
+  _slidingMoveSpeedModifier: 1.5
   _moveAction:
     m_UseReference: 1
     m_Action:
