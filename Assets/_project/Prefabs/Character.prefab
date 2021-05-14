@@ -1058,7 +1058,7 @@ MonoBehaviour:
   _moveSpeed: 12
   _orientSpeed: 20
   _gravity: {x: 0, y: -30, z: 0}
-  _airSpeed: 5
+  _airSpeed: 10
   _airAcceleration: 10
   _jumpPower: 12
   _extraForwardJumpPower: 15
