@@ -20,7 +20,7 @@ namespace TOJam.FLR
         
         protected override IEnumerator InitializeManager()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             
             _cameraPoints = new List<CameraPoint>();
             
@@ -63,7 +63,7 @@ namespace TOJam.FLR
         
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            var current = SceneManager.GetActiveScene();
+            var current = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
             if (!scene.IsValid() || scene == current) return;
             _cameraPoints?.Clear();
         }

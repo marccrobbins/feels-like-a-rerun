@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace TOJam.FLR
 {
@@ -11,8 +10,10 @@ namespace TOJam.FLR
         [SerializeField] private GameObject _window;
         [SerializeField] private bool _startVisible;
         
-        protected EventSystem _eventSystem;
+        public bool IsVisible { get; protected set; }
         
+        protected EventSystem _eventSystem;
+
         private void Awake()
         {
             _eventSystem = FindObjectOfType<EventSystem>();
@@ -21,16 +22,40 @@ namespace TOJam.FLR
         private void Start()
         {
             _window.SetActive(_startVisible);
+            
+            foreach (var selectable in _window.GetComponentsInChildren<Selectable>())
+            {
+                if (!selectable) continue;
+                selectable.interactable = _startVisible;
+            }
+            
+            IsVisible = _startVisible;
         }
 
         public virtual void Show()
         {
             _window.SetActive(true);
+
+            foreach (var selectable in _window.GetComponentsInChildren<Selectable>())
+            {
+                if (!selectable) continue;
+                selectable.interactable = true;
+            }
+            
+            IsVisible = true;
         }
 
         public virtual void Hide()
         {
             _window.SetActive(false);
+            
+            foreach (var selectable in _window.GetComponentsInChildren<Selectable>())
+            {
+                if (!selectable) continue;
+                selectable.interactable = false;
+            }
+            
+            IsVisible = false;
         }
 
         public void SetFirstInteractable(GameObject interactableObject)

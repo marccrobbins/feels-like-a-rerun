@@ -17,11 +17,25 @@ namespace TOJam.FLR
         private void Start()
         {
             //_characterMotor = KinematicMotorManager.Instance.SpawnMotor(_characterMotorPrefab, transform.position, transform.rotation, _levelTransform);
+            GameManager.Instance.BeginPreGame();
+            StartRun();
         }
 
         private void Update()
         {
             
+        }
+
+        public void StartRun()
+        {
+            Debug.Log("Start Run");
+            GameManager.Instance.BeginGame();
+        }
+
+        public void FinishRun()
+        {
+            Debug.Log("Finish Run");
+            GameManager.Instance.BeginPostGame();
         }
 
         private void OnDrawGizmos()

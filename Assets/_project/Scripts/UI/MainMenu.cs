@@ -4,13 +4,13 @@ using Context = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 namespace TOJam.FLR
 {
-    public class MainMenu : MonoBehaviour
+    public class MainMenu : UIWindowBase
     {
         [SerializeField] private PopUpWindow _popUpWindow;
 
         public void StartRun()
         {
-            GameManager.Instance.StartRun();
+            SceneManager.Instance.LoadGameLevel();
         }
         
         public void Quit()
